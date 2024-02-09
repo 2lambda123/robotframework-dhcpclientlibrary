@@ -132,9 +132,9 @@ class RemoteDhcpClientControl:
             if logfile:
                 print('Saving TimeoutOnGetVersion environment dump to file "' + logfile.name + '"', file=sys.stderr)
                 print('TimeoutOnGetVersion', file=logfile)
-                subprocess.call('ps -ef', stdout=logfile, shell=True)
-                subprocess.call('perl ./dbus-introspect.pl --system com.legrandelectric.RobotFrameworkIPC.DhcpClientLibrary /com/legrandelectric/RobotFrameworkIPC/DhcpClientLibrary/eth1', stdout=logfile, shell=True)
-                subprocess.call('dbus-send --system --type=method_call --print-reply --dest=com.legrandelectric.RobotFrameworkIPC.DhcpClientLibrary /com/legrandelectric/RobotFrameworkIPC/DhcpClientLibrary/eth1 com.legrandelectric.RobotFrameworkIPC.DhcpClientLibrary.GetVersion', stdout=logfile, shell=True)
+                subprocess.call('ps -ef', stdout=logfile, shell=False)
+                subprocess.call('perl ./dbus-introspect.pl --system com.legrandelectric.RobotFrameworkIPC.DhcpClientLibrary /com/legrandelectric/RobotFrameworkIPC/DhcpClientLibrary/eth1', stdout=logfile, shell=False)
+                subprocess.call('dbus-send --system --type=method_call --print-reply --dest=com.legrandelectric.RobotFrameworkIPC.DhcpClientLibrary /com/legrandelectric/RobotFrameworkIPC/DhcpClientLibrary/eth1 com.legrandelectric.RobotFrameworkIPC.DhcpClientLibrary.GetVersion', stdout=logfile, shell=False)
                 logfile.close()
             raise Exception('TimeoutOnGetVersion')
         else:
