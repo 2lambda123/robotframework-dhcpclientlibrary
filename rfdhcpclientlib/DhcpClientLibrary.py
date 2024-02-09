@@ -142,6 +142,8 @@ class RemoteDhcpClientControl:
         
     # D-Bus-related methods
     def getRemotePid(self):
+        """"""
+        
         return self._dbus_iface.GetPid()
     
     def _loopHandleDbus(self):
@@ -210,6 +212,8 @@ class RemoteDhcpClientControl:
         # Lionel: FIXME: should start a timeout here to make the lease invalid at expiration (note: the client also does the same, and should issue a LeaseLost signal accordingly but just in case, shouldn't we double check on this side? 
         
     def _handleLeaseLost(self, **kwargs):
+        """"""
+        
         logger.debug('Got signal LeaseLost')
         self.status.reset() # Reset all data about the previous lease
     
@@ -250,6 +254,8 @@ class RemoteDhcpClientControl:
         self._exit_unlock_event.clear()
     
     def sendDiscover(self):
+        """"""
+        
         logger.info('Instructing slave to send DISCOVER')
         self._dbus_iface.Discover() # Ask slave process to send a DHCP discover
     
@@ -327,6 +333,8 @@ class SlaveDhcpClientProcess:
     """
     
     def __init__(self, dhcp_client_daemon_exec_path, ifname, logger = None):
+        """"""
+        
         self._slave_dhcp_client_path = dhcp_client_daemon_exec_path
         self._slave_dhcp_client_proc = None
         self._slave_dhcp_client_pid = None
